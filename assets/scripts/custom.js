@@ -15,6 +15,13 @@ xhr.onreadystatechange = () => {
 
       //   open large image:
       element.addEventListener("click", function() {
+        let largeImage = document.getElementById("full-image");
+        if (!largeImage) {
+          largeImage = document.createElement("img");
+          largeImage.setAttribute("src", xhr.response[i].download_url);
+          largeImage.setAttribute("id", "full-image");
+          document.getElementById("largeImage").appendChild(largeImage);
+        }
         document.getElementById("full-image").setAttribute("src", xhr.response[i].download_url);
         document.getElementById("p1").innerHTML =
           "Author: " +
